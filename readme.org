@@ -1,0 +1,9 @@
+* Colectica SDK Examples
+These examples provide a way to get started using Colectica SDK.
+
+Browse the src/ directory to find sample code demonstrating several uses of the SDK.
+
+- Programatically create valid DDI 3.1 instances
+- Read DDI 3.1 files into an easy-to-manipulate object model
+- Interact with Colectica Repository via Web Services
+- Programatically manipulate metadata to aid in harmonization
