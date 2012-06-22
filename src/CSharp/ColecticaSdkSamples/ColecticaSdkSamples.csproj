@@ -45,10 +45,10 @@
       <HintPath>C:\svn\algenta\Algenta.Colectica.Designer.App\bin\Debug\Algenta.Colectica.Repository.Client.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>C:\Program Files (x86)\Colectica\Colectica SDK 3.0.2443\bin\log4net.dll</HintPath>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Colectica\Colectica SDK 3.0.2241\bin\log4net.dll</HintPath>
     </Reference>
     <Reference Include="QuickGraph">
-      <HintPath>C:\Program Files (x86)\Colectica\Colectica SDK 3.0.2443\bin\QuickGraph.dll</HintPath>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Colectica\Colectica SDK 3.0.2241\bin\QuickGraph.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Activities" />
