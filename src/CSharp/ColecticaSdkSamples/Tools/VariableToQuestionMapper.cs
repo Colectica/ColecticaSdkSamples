@@ -13,23 +13,31 @@ namespace ColecticaSdkSamples.Tools
 {
 	public class VariableToQuestionMapper
 	{
-		static void MapVariablesToQuestions(bool onlyTest)
+		/// <summary>
+		/// Reads a text file with one mapping per line:
+		///   [VariableName]|[QuestionName]
+		/// 
+		/// </summary>
+		/// <remarks>
+		/// See below for a method that automatically maps variables and questions based on matching names, 
+		/// without the need for an extra file to specify the mapping.
+		/// </remarks>
+		/// <param name="filePath"></param>
+		/// <param name="variableSchemeId"></param>
+		/// <param name="questionSchemeId"></param>
+		/// <param name="onlyTest"></param>
+		static void MapVariablesToQuestions(string filePath, IdentifierTriple variableSchemeId, IdentifierTriple questionSchemeId, bool onlyTest)
 		{
-			MultilingualString.CurrentCulture = "en-GB";
-			VersionableBase.DefaultAgencyId = "cls";
-
-			string filePath = @"D:\Downloads\filesforMinneapolis\bcs2008_data_question_map.txt";
-
 			var client = RepositoryIntro.GetClient();
 
-			CommitOptions commitOptions = new CommitOptions();
+			VariableScheme vs = client.GetItem(variableSchemeId, ChildReferenceProcessing.Populate) as VariableScheme;
+			QuestionScheme qs = client.GetItem(questionSchemeId, ChildReferenceProcessing.Populate) as QuestionScheme;
 
-			VariableScheme vs = client.GetItem(new Guid("3f56bd8c-3a1e-43cb-86cb-da3343b6b7ee"), "ucl.ac.uk", 1, ChildReferenceProcessing.Populate) as VariableScheme;
-			QuestionScheme qs = client.GetItem(new Guid("906a03ff-d59b-4ac7-b9a9-2b3f455b4be6"), "cls", 2, ChildReferenceProcessing.Populate) as QuestionScheme;
-
+			// Read each line of the mapping file.
 			int matches = 0;
 			foreach (string line in File.ReadLines(filePath))
 			{
+				// Grab the variable name and question name.
 				string[] parts = line.Split(new char[] { '|' });
 				if (parts.Length != 2)
 				{
@@ -40,18 +48,20 @@ namespace ColecticaSdkSamples.Tools
 				string variableName = parts[0];
 				string questionName = parts[1];
 
+				// Grab the corresponding variable and question objects. 
 				Variable variable = vs.Variables.SingleOrDefault(v => v.ItemName.Current == variableName);
 				Question question = qs.Questions.SingleOrDefault(q => q.ItemName.Current == questionName);
-
 				if (variable != null && question != null)
 				{
+					// Add the question as SourceQuestion of the variable.
 					variable.SourceQuestions.Add(question);
 					variable.Version++;
+
 					Console.WriteLine(string.Format("Assigning {0} to {1}", question.ItemName.Current, variable.ItemName.Current));
 
 					if (!onlyTest)
 					{
-						client.RegisterItem(variable, commitOptions);
+						client.RegisterItem(variable, new CommitOptions());
 					}
 
 					matches++;
@@ -65,37 +75,42 @@ namespace ColecticaSdkSamples.Tools
 			vs.Version++;
 			if (!onlyTest)
 			{
-				client.RegisterItem(vs, commitOptions);
+				client.RegisterItem(vs, new CommitOptions());
 			}
 
 			Console.WriteLine("Done. Found " + matches.ToString() + " matches.");
 		}
 
-		static void MapVariablesToQuestionsAuto(bool onlyTest)
+		/// <summary>
+		/// Maps Variables to Questions where the name of the Variable matches the name of 
+		/// the Question.
+		/// </summary>
+		/// <param name="variableSchemeId"></param>
+		/// <param name="questionSchemeId"></param>
+		/// <param name="onlyTest"></param>
+		static void MapVariablesToQuestionsAuto(IdentifierTriple variableSchemeId, IdentifierTriple questionSchemeId, bool onlyTest)
 		{
-			MultilingualString.CurrentCulture = "en-GB";
-			VersionableBase.DefaultAgencyId = "cls";
-
-			string filePath = @"d:\Downloads\Mapping.txt";
-
 			var client = RepositoryIntro.GetClient();
 
 			CommitOptions commitOptions = new CommitOptions();
 
-			VariableScheme vs = client.GetItem(new Guid("3f56bd8c-3a1e-43cb-86cb-da3343b6b7ee"), "ucl.ac.uk", 1, ChildReferenceProcessing.Populate) as VariableScheme;
-			QuestionScheme qs = client.GetItem(new Guid("906a03ff-d59b-4ac7-b9a9-2b3f455b4be6"), "cls", 2, ChildReferenceProcessing.Populate) as QuestionScheme;
+			VariableScheme vs = client.GetItem(variableSchemeId, ChildReferenceProcessing.Populate) as VariableScheme;
+			QuestionScheme qs = client.GetItem(questionSchemeId, ChildReferenceProcessing.Populate) as QuestionScheme;
 
+			// Grab all variable names and question names.
 			var variableNameList = vs.Variables.Select(v => v.ItemName.Current.Substring(2)).ToList();
 			var questionNameList = qs.Questions.Select(q => q.ItemName.Current).ToList();
 
 			int matches = 0;
-			//foreach (string line in File.ReadLines(filePath))
 			foreach (string varName in variableNameList)
 			{
 				string foundQuestionName = questionNameList.Where(q => string.Compare(q, varName, true) == 0).FirstOrDefault();
 				if (foundQuestionName != null)
 				{
-					Variable variable = vs.Variables.SingleOrDefault(v => v.ItemName.Current == "b8" + varName);
+					// If there is a question with the same name as this variable, 
+					// grab the Question and Variable objects, and assign the question
+					// as a SourceQuestion.
+					Variable variable = vs.Variables.SingleOrDefault(v => v.ItemName.Current == varName);
 					Question question = qs.Questions.SingleOrDefault(q => q.ItemName.Current == foundQuestionName);
 
 					if (variable != null && question != null)
