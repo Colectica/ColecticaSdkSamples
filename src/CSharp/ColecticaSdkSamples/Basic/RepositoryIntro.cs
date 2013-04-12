@@ -73,8 +73,13 @@ namespace ColecticaSdkSamples.Basic
 			// Grab a client for our Repository.
 			var client = GetClient();
 
-			// Register the item.
-			client.RegisterItem(variableScheme, new CommitOptions());
+            // Register the variable.
+            var options = new CommitOptions();
+            client.RegisterItem(variable, options);
+
+			// Register the list. This only registers the variableScheme,
+            // not any variables contained in the scheme.
+			client.RegisterItem(variableScheme, options);            
 		}
 
 		/// <summary>
