@@ -10,6 +10,7 @@ using Algenta.Colectica.Model.Ddi.Serialization;
 using Algenta.Colectica.Model;
 using Algenta.Colectica.Model.Ddi.Utility;
 using System.IO;
+using System.Reflection;
 
 namespace ColecticaSdkSamples.Basic
 {
