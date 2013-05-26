@@ -27,14 +27,8 @@ namespace ColecticaSdkSamples.Basic
 			var connectionInfo = new RepositoryConnectionInfo()
 			{
 				// TODO Replace this with the hostname of your Colectica Repository
-				Url = "colecticatest", 
-
-				AuthenticationMethod = RepositoryAuthenticationMethod.UserName,
-				
-				// TODO Replace these with a valid username and password for your Repository
-				UserName = "admin",
-				Password = "password",
-				
+				Url = "localhost", 
+				AuthenticationMethod = RepositoryAuthenticationMethod.Windows,
 				TransportMethod = RepositoryTransportMethod.NetTcp,
 			};
 			
@@ -74,13 +68,8 @@ namespace ColecticaSdkSamples.Basic
 			// Grab a client for our Repository.
 			var client = GetClient();
 
-            // Register the variable.
-            var options = new CommitOptions();
-            client.RegisterItem(variable, options);
-
-			// Register the list. This only registers the variableScheme,
-            // not any variables contained in the scheme.
-			client.RegisterItem(variableScheme, options);            
+			// Register the item.
+			client.RegisterItem(variableScheme, new CommitOptions());
 		}
 
 		/// <summary>
@@ -206,6 +195,153 @@ namespace ColecticaSdkSamples.Basic
 			//facet.ItemTypes.Add(DdiItemType.Variable);
 			//var results = client.SearchTypedSet(vs.CompositeId, facet);
 			//var descriptions = client.GetRepositoryItemDescriptions(results.ToIdentifierCollection());
+		}
+
+		public void BuildAndRegisterConcepts()
+		{
+			// Setting the default agency like this means
+			// we don't need to manually set it for every
+			// item we create.
+			VersionableBase.DefaultAgencyId = "int.example";
+
+			// Create a scheme to hold the concepts.
+			ConceptScheme scheme = new ConceptScheme();
+			scheme.Label.Current = "Transportation Modes";
+
+			// Create 6 concepts, setting up a small hierarchy.
+			Concept transportMode = new Concept();
+			transportMode.Label.Current = "Transport Mode";
+
+			Concept auto = new Concept();
+			auto.SubclassOf.Add(transportMode);
+			auto.Label.Current = "Auto";
+
+			Concept car = new Concept();
+			car.SubclassOf.Add(auto);
+			car.Label.Current = "Car";
+
+			Concept truck = new Concept();
+			truck.SubclassOf.Add(auto);
+			truck.Label.Current = "Truck";
+
+			Concept bike = new Concept();
+			bike.SubclassOf.Add(transportMode);
+			bike.Label.Current = "Bike";
+
+			Concept walk = new Concept();
+			walk.SubclassOf.Add(transportMode);
+			walk.Label.Current = "Walk";
+
+			// Add the concpts to the scheme.
+			scheme.Concepts.Add(transportMode);
+			scheme.Concepts.Add(auto);
+			scheme.Concepts.Add(car);
+			scheme.Concepts.Add(truck);
+			scheme.Concepts.Add(bike);
+			scheme.Concepts.Add(walk);
+
+			var client = GetClient();
+			CommitOptions options = new CommitOptions();
+
+			// Gather all the scheme and all the items in the scheme,
+			// so we can register them with a single call to the repository.
+			ItemGathererVisitor gatherer = new ItemGathererVisitor();
+			scheme.Accept(gatherer);
+
+			// Register the items with the repository.
+			client.RegisterItems(gatherer.FoundItems, options);
+
+			// Alternatively, we could register the items one at a time, like this.
+
+			//client.RegisterItem(scheme, options);
+			//client.RegisterItem(transportMode, options);
+			//client.RegisterItem(auto, options);
+			//client.RegisterItem(car, options);
+			//client.RegisterItem(truck, options);
+			//client.RegisterItem(bike, options);
+			//client.RegisterItem(walk, options);
+		}
+
+		public void GetItemMakeChangeAndReregister()
+		{
+			VersionableBase.DefaultAgencyId = "int.example";
+
+			var client = GetClient();
+
+			DdiClient ddiClient = new DdiClient(client);
+
+			// Get a ConceptScheme from the repository,
+			// and populate the member concepts.
+			// Note that you probably have to change the UUID here
+			// to represent one that is in your repository.
+			var scheme = ddiClient.GetConceptScheme(
+				new Guid("0cc13be5-3c89-4d1a-927f-ac7634d0c05a"),
+				"int.example", 1,
+				ChildReferenceProcessing.Populate);
+
+			// Just add a description to the ConceptScheme.
+			scheme.Description.Current = "This is a description we are adding.";
+
+			// Before we register the new version of the item, we have to 
+			// update the version number.
+			scheme.Version++;
+
+			// Register the item with the repository.
+			var options = new CommitOptions();
+			client.RegisterItem(scheme, options);
+		}
+
+		public void GetItemChangeChildAndReregister()
+		{
+			VersionableBase.DefaultAgencyId = "int.example";
+
+			var client = GetClient();
+
+			// The DdiClient class wraps the normal repository client,
+			// providing extra methods to return DDI item types directly.
+			// This helps avoid requiring casting of basic items.
+			DdiClient ddiClient = new DdiClient(client);
+
+			// Get a ConceptScheme from the repository,
+			// and populate the member concepts.
+			// Note that you probably have to change the UUID here
+			// to represent one that is in your repository.
+			var scheme = ddiClient.GetConceptScheme(
+				new Guid("0cc13be5-3c89-4d1a-927f-ac7634d0c05a"),
+				"int.example", 2,
+				ChildReferenceProcessing.Populate);
+
+			if (scheme == null || scheme.Concepts.Count < 3)
+			{
+				Console.WriteLine("No scheme, or not enough items in the scheme.");
+				return;
+			}
+			
+			// Grab the second concept and add a description to it.
+			var concept = scheme.Concepts[2];
+			concept.Description.Current = "This is the fourth concept";
+
+			// When we change a property on the Concept, the concept's
+			// IsDirty property is automatically set to true, indicating
+			// that it has unsaved changes.
+			Console.WriteLine("IsDirty: ", concept.IsDirty);
+
+			// The DirtyItemGatherer will walk a set of objects and create
+			// a list of all objects that are dirty.
+			DirtyItemGatherer gatherer = new DirtyItemGatherer(
+				gatherEvenIfNotDirty: false,
+				markParentsDirty: true);
+			scheme.Accept(gatherer);
+
+			var options = new CommitOptions();
+
+			// For every changed item, increase the version and
+			// register the new version with the repository.
+			foreach (var item in gatherer.DirtyItems)
+			{
+				item.Version++;
+				client.RegisterItem(item, options);
+			}
 		}
 	}
 }
