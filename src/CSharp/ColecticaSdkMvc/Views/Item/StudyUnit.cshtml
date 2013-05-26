@@ -1,0 +1,23 @@
+﻿@model ColecticaSdkMvc.Models.StudyUnitModel
+
+@{
+	Layout = "~/Views/Shared/_Item.cshtml";
+	ViewBag.Title = "Study";
+}
+
+<h2>@Model.StudyUnit.DublinCoreMetadata.Title.Current</h2>
+
+<h3>Questions</h3>
+@if (Model.Questions.Count == 0)
+{
+	<p>No questions are referenced in this study.</p>
+}
+else
+{
+	<ul>
+  @foreach (var question in Model.Questions)
+  {
+		<li><a href="/item/@question.AgencyId/@question.Identifier">@question.Summary.Current</a></li>
+  }
+	</ul>
+}

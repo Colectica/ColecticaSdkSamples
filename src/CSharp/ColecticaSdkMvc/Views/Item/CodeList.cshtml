@@ -1,0 +1,24 @@
+﻿@model ColecticaSdkMvc.Models.CodeSchemeModel
+
+@{
+	Layout = "~/Views/Shared/_Item.cshtml";
+    ViewBag.Title = "Code List";
+}
+
+<h2>@Model.CodeScheme.DisplayLabel</h2>
+
+<table>
+	<tr>
+		<th>Code</th>
+		<th>Label</th>
+	</tr>
+
+	@foreach (var code in Model.CodeScheme.GetFlattenedCodes())
+ {
+	 <tr>
+		 <td>@code.Value</td>
+		 <td>@code.Category.DisplayLabel</td>
+	 </tr>
+ }
+
+</table>

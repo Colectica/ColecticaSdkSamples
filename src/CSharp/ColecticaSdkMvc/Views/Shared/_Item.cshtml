@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+	@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        @RenderBody()
+
+		<div id="referencingItems">
+		<h3>Referencing Items</h3>
+		<ul>
+			@foreach (var item in Model.ReferencingItems)
+		 {
+			 <li>@item.DisplayLabel</li>
+		 }
+		</ul>
+		</div>
+
+		<div id="history">
+			<h3>History</h3>
+			<ul>
+			@foreach (var version in Model.History)
+			{
+				<li>@version.Version - @version.VersionDate.ToString("f")</li>
+			}
+			</ul>
+		</div>
+    </div>
+
+	
+</body>
+</html>

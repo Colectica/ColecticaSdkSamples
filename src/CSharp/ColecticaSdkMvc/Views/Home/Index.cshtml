@@ -1,0 +1,21 @@
+﻿@model ColecticaSdkMvc.Models.HomeModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@if (Model.Results.Count == 0)
+{
+	<p>No results were found.</p>
+}
+else
+{
+<ul>
+	@foreach (var result in Model.Results)
+ {
+	 <li><a href="/item/@result.AgencyId/@result.Identifier">@result.DisplayLabel</a></li>
+ }
+</ul>	
+}

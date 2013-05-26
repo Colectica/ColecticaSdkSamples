@@ -1,0 +1,17 @@
+﻿@model ColecticaSdkMvc.Models.CategorySchemeModel
+
+@{
+	Layout = "~/Views/Shared/_Item.cshtml";
+	ViewBag.Title = "Category List";
+}
+
+<h2>@Model.CategoryScheme.DisplayLabel</h2>
+
+<!-- Show a list of all the categories. -->
+<ul>
+	@foreach (var category in Model.CategoryScheme.Categories)
+ {
+	<li>@category.DisplayLabel</li>
+ }
+</ul>
+
