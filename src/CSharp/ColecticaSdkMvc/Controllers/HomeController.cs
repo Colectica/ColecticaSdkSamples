@@ -34,8 +34,8 @@ namespace ColecticaSdkMvc.Controllers
 			// StudyUnits, CodeSchemes, and CategorySchemes.
 			SearchFacet facet = new SearchFacet();
 			facet.ItemTypes.Add(DdiItemType.StudyUnit);
-			facet.ItemTypes.Add(DdiItemType.CodeScheme);
-			facet.ItemTypes.Add(DdiItemType.CategoryScheme);
+            //facet.ItemTypes.Add(DdiItemType.CodeScheme);
+            //facet.ItemTypes.Add(DdiItemType.CategoryScheme);
 
 			// Set the sort order of the results. Options are 
 			// Alphabetical, ItemType, MetadataRank, and VersionDate.

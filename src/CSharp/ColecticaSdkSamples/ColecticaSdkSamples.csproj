@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Basic\Intro.cs" />
+    <Compile Include="Basic\Quality.cs" />
     <Compile Include="Tools\CategoryHarmonizer.cs" />
     <Compile Include="Tools\VariableToQuestionMapper.cs" />
     <Compile Include="Tools\OrganizeSequences.cs" />

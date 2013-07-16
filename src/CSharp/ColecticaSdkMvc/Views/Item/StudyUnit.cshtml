@@ -21,3 +21,18 @@ else
   }
 	</ul>
 }
+
+<h3>Quality</h3>
+@if (Model.StudyUnit.QualityStatements.Count == 0)
+{
+    <p>This study does not reference a quality statement.</p>
+}
+else
+{
+    <ul>
+    @foreach (var qualityStatement in Model.StudyUnit.QualityStatements)
+    {
+        <li><a href="/item/@qualityStatement.AgencyId/@qualityStatement.Identifier">@qualityStatement.Label.Current</a></li>
+    }   
+    </ul>
+}

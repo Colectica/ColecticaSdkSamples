@@ -58,6 +58,11 @@ namespace ColecticaSdkMvc.Controllers
 				var studyModel = new StudyUnitModel();
 				studyModel.StudyUnit = studyUnit;
 
+                foreach (var qualityStatement in studyUnit.QualityStatements)
+                {
+                    client.PopulateItem(qualityStatement);
+                }
+
 				// Use a set search to get a list of all questions that are referenced
 				// by the study. A set search will return items that may be several steps
 				// away.
@@ -77,7 +82,7 @@ namespace ColecticaSdkMvc.Controllers
 				viewName = "StudyUnit";
 			}
 			else if (item is CodeScheme)
-			{
+			{   
 				var codeScheme = item as CodeScheme;
 
 				// Create the model and set the item as a property, so it's contents can be displayed
@@ -87,11 +92,20 @@ namespace ColecticaSdkMvc.Controllers
 				model = codeSchemeModel;
 				viewName = "CodeList";
 			}
-			else
-			{
-				model = new ItemModel();
-				viewName = "GenericItem";
-			}
+            else if (item is QualityStatement)
+            {
+                var qualityStatement = item as QualityStatement;
+
+                var qualityStatementModel = new QualityStatementModel(qualityStatement);
+
+                model = qualityStatementModel;
+                viewName = "QualityStatement";
+            }
+            else
+            {
+                model = new ItemModel();
+                viewName = "GenericItem";
+            }
 
 			// Fopr all item types, get the version history of the item,
 			// and add the information to the model.

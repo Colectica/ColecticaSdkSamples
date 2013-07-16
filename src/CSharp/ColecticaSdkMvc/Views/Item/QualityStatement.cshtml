@@ -1,0 +1,36 @@
+﻿@model ColecticaSdkMvc.Models.QualityStatementModel
+
+@helper ShowNode(Algenta.Colectica.Model.Ddi.Utility.QualityStatementNode node)
+{
+    <div class="qualityNode">
+        @if (node.Children.Count > 0)
+        {
+            <h3>@node.Item.ComplianceConcept.Label.Current</h3>
+            <dl>
+            @foreach (var child in node.Children)
+            {
+                @ShowNode(child)
+            }
+            </dl>
+        }        
+        else
+        {
+            <dl>
+                <dt>@node.Item.ComplianceConcept.Label.Current</dt>
+                <dd>@node.Item.ComplianceDescription.Current</dd>
+            </dl>
+        }
+    </div>
+}
+
+@{
+	Layout = "~/Views/Shared/_Item.cshtml";
+	ViewBag.Title = "Study";
+}
+
+<h2>@Model.QualityStatement.Label.Current</h2>
+
+@foreach (var item in Model.RootNodes)
+{
+    @ShowNode(item)
+}
