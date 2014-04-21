@@ -10,7 +10,8 @@ Here is a graph of items that describe the dataset.
 
 Colectica Repository provides several ways to search this information.
 
-|------------ | -------------------------------------------- |
+| Search type         | Description                                 |
+|-------------------- | ------------------------------------------- |
 | Item search         | Find all items that match certain criteria. |
 | Relationship search | Find all items directly related to an item. |
 | Set search          | Find all items in an item's set, where a set includes all items connected to the item, no matter how many links are followed. |
