@@ -33,7 +33,7 @@ namespace ColecticaSdkSamples.Basic
 			};
 			
 			// Create the client object, passing in the connection information.
-			WcfRepositoryClient client = new WcfRepositoryClient(connectionInfo);
+			var client = new WcfRepositoryClient(connectionInfo);
 			return client;
 		}
 
@@ -70,6 +70,7 @@ namespace ColecticaSdkSamples.Basic
 
 			// Register the item.
 			client.RegisterItem(variableScheme, new CommitOptions());
+            client.RegisterItem(variable, new CommitOptions());
 		}
 
 		/// <summary>
