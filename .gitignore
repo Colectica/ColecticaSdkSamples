@@ -1,0 +1,11 @@
+/lib
+
+/src/CSharp/ColecticaSdkMvc/bin
+/src/CSharp/ColecticaSdkMvc/obj/Debug
+
+/src/CSharp/ColecticaSdkSamples/bin/Debug
+
+/src/CSharp/ColecticaSdkSamples/obj/x86/Debug
+/src/CSharp/ColecticaSdkMvc/ColecticaSdkMvc.csproj.user
+/src/ColecticaSdkSamples.v11.suo
+/src/ColecticaSdkSamples.v12.suo
