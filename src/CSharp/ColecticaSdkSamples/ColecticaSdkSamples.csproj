@@ -36,19 +36,29 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Algenta.Colectica.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>C:\svn\algenta\Algenta.Colectica.Designer.App\bin\Debug\Algenta.Colectica.Model.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Algenta.Colectica.Model.dll</HintPath>
     </Reference>
     <Reference Include="Algenta.Colectica.Model.Ddi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>C:\svn\algenta\Algenta.Colectica.Designer.App\bin\Debug\Algenta.Colectica.Model.Ddi.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Algenta.Colectica.Model.Ddi.dll</HintPath>
     </Reference>
     <Reference Include="Algenta.Colectica.Repository.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>C:\svn\algenta\Algenta.Colectica.Designer.App\bin\Debug\Algenta.Colectica.Repository.Client.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Algenta.Colectica.Repository.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Algenta.Colectica.ViewModel">
+      <HintPath>..\..\..\lib\Algenta.Colectica.ViewModel.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Colectica\Colectica SDK 3.0.2241\bin\log4net.dll</HintPath>
+      <HintPath>..\..\..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="QuickGraph">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Colectica\Colectica SDK 3.0.2241\bin\QuickGraph.dll</HintPath>
+      <HintPath>..\..\..\lib\QuickGraph.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Activities" />
