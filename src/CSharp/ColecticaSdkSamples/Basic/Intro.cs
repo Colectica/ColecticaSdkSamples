@@ -90,7 +90,7 @@ namespace ColecticaSdkSamples.Basic
 			CategoryScheme catScheme = new CategoryScheme();
 			resourcePackage.CategorySchemes.Add(catScheme);
 
-			CodeScheme codeScheme = new CodeScheme();
+			var codeScheme = new CodeList();
 			resourcePackage.CodeSchemes.Add(codeScheme);
 
 			// Add the first category and code: Airplane

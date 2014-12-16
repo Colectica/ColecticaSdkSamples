@@ -269,16 +269,14 @@ namespace ColecticaSdkSamples.Basic
 
 			var client = GetClient();
 
-			DdiClient ddiClient = new DdiClient(client);
-
 			// Get a ConceptScheme from the repository,
 			// and populate the member concepts.
 			// Note that you probably have to change the UUID here
 			// to represent one that is in your repository.
-			var scheme = ddiClient.GetConceptScheme(
+			var scheme = client.GetItem(
 				new Guid("0cc13be5-3c89-4d1a-927f-ac7634d0c05a"),
 				"int.example", 1,
-				ChildReferenceProcessing.Populate);
+				ChildReferenceProcessing.Populate) as ConceptScheme;
 
 			// Just add a description to the ConceptScheme.
 			scheme.Description.Current = "This is a description we are adding.";
@@ -298,19 +296,15 @@ namespace ColecticaSdkSamples.Basic
 
 			var client = GetClient();
 
-			// The DdiClient class wraps the normal repository client,
-			// providing extra methods to return DDI item types directly.
-			// This helps avoid requiring casting of basic items.
-			DdiClient ddiClient = new DdiClient(client);
 
 			// Get a ConceptScheme from the repository,
 			// and populate the member concepts.
 			// Note that you probably have to change the UUID here
 			// to represent one that is in your repository.
-			var scheme = ddiClient.GetConceptScheme(
+			var scheme = client.GetItem(
 				new Guid("0cc13be5-3c89-4d1a-927f-ac7634d0c05a"),
 				"int.example", 2,
-				ChildReferenceProcessing.Populate);
+				ChildReferenceProcessing.Populate) as ConceptScheme;
 
 			if (scheme == null || scheme.Concepts.Count < 3)
 			{
