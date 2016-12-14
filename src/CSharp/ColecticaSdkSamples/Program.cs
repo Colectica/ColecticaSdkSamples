@@ -31,6 +31,10 @@ namespace ConsoleApplication2
 			intro.LoadDdiAndCountSomeElements();
 			intro.QueryObjectModel();
 
+            // Visit the graph that we made.
+            var visitor = new ConsoleWriterVisitor();
+            intro.Instance.Accept(visitor);
+
 			// Also, look around the RepositoryIntro class and the various
 			// classes in the Tools namespace.
 
