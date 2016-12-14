@@ -71,6 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Basic\ConsoleWriterVisitor.cs" />
     <Compile Include="Basic\Intro.cs" />
     <Compile Include="Basic\Quality.cs" />
     <Compile Include="Tools\CategoryHarmonizer.cs" />

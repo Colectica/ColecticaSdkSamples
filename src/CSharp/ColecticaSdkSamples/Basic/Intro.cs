@@ -17,6 +17,8 @@ namespace ColecticaSdkSamples.Basic
 	/// </summary>
 	public class Intro
 	{
+        public DdiInstance Instance { get; protected set; }
+
 		/// <summary>
 		/// This method builds up a DdiInstance and writes it to a 
 		/// valid DDI 3.1. XML file.
@@ -33,6 +35,7 @@ namespace ColecticaSdkSamples.Basic
 			// Start out by creating a new DDIInstance.
 			// The DdiInstance can hold StudyUnits, Groups, and ResourcePackages.
 			DdiInstance instance = new DdiInstance();
+            Instance = instance;
 			instance.DublinCoreMetadata.Title.Current = "My First Instance";
 
 			// Since we set the CurrentCulture to "en-US", that last line is 
