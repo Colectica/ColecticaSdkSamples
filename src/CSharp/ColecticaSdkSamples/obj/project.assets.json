@@ -1,0 +1,290 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.5": {
+      "ColecticaSDK/5.4.6743": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.3",
+          "log4net": "1.2.10"
+        },
+        "compile": {
+          "lib/net40/Algenta.Colectica.Model.Ddi.dll": {},
+          "lib/net40/Algenta.Colectica.Model.dll": {},
+          "lib/net40/Algenta.Colectica.Repository.Client.dll": {},
+          "lib/net40/Algenta.Colectica.ViewModel.dll": {},
+          "lib/net40/Colectica.Reporting.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Algenta.Colectica.Model.Ddi.dll": {},
+          "lib/net40/Algenta.Colectica.Model.dll": {},
+          "lib/net40/Algenta.Colectica.Repository.Client.dll": {},
+          "lib/net40/Algenta.Colectica.ViewModel.dll": {},
+          "lib/net40/Colectica.Reporting.dll": {}
+        }
+      },
+      "log4net/1.2.10": {
+        "type": "package",
+        "compile": {
+          "lib/2.0/log4net.dll": {}
+        },
+        "runtime": {
+          "lib/2.0/log4net.dll": {}
+        }
+      },
+      "Newtonsoft.Json/10.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.5/win": {
+      "ColecticaSDK/5.4.6743": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.3",
+          "log4net": "1.2.10"
+        },
+        "compile": {
+          "lib/net40/Algenta.Colectica.Model.Ddi.dll": {},
+          "lib/net40/Algenta.Colectica.Model.dll": {},
+          "lib/net40/Algenta.Colectica.Repository.Client.dll": {},
+          "lib/net40/Algenta.Colectica.ViewModel.dll": {},
+          "lib/net40/Colectica.Reporting.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Algenta.Colectica.Model.Ddi.dll": {},
+          "lib/net40/Algenta.Colectica.Model.dll": {},
+          "lib/net40/Algenta.Colectica.Repository.Client.dll": {},
+          "lib/net40/Algenta.Colectica.ViewModel.dll": {},
+          "lib/net40/Colectica.Reporting.dll": {}
+        }
+      },
+      "log4net/1.2.10": {
+        "type": "package",
+        "compile": {
+          "lib/2.0/log4net.dll": {}
+        },
+        "runtime": {
+          "lib/2.0/log4net.dll": {}
+        }
+      },
+      "Newtonsoft.Json/10.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.5/win-x64": {
+      "ColecticaSDK/5.4.6743": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.3",
+          "log4net": "1.2.10"
+        },
+        "compile": {
+          "lib/net40/Algenta.Colectica.Model.Ddi.dll": {},
+          "lib/net40/Algenta.Colectica.Model.dll": {},
+          "lib/net40/Algenta.Colectica.Repository.Client.dll": {},
+          "lib/net40/Algenta.Colectica.ViewModel.dll": {},
+          "lib/net40/Colectica.Reporting.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Algenta.Colectica.Model.Ddi.dll": {},
+          "lib/net40/Algenta.Colectica.Model.dll": {},
+          "lib/net40/Algenta.Colectica.Repository.Client.dll": {},
+          "lib/net40/Algenta.Colectica.ViewModel.dll": {},
+          "lib/net40/Colectica.Reporting.dll": {}
+        }
+      },
+      "log4net/1.2.10": {
+        "type": "package",
+        "compile": {
+          "lib/2.0/log4net.dll": {}
+        },
+        "runtime": {
+          "lib/2.0/log4net.dll": {}
+        }
+      },
+      "Newtonsoft.Json/10.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.5/win-x86": {
+      "ColecticaSDK/5.4.6743": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.3",
+          "log4net": "1.2.10"
+        },
+        "compile": {
+          "lib/net40/Algenta.Colectica.Model.Ddi.dll": {},
+          "lib/net40/Algenta.Colectica.Model.dll": {},
+          "lib/net40/Algenta.Colectica.Repository.Client.dll": {},
+          "lib/net40/Algenta.Colectica.ViewModel.dll": {},
+          "lib/net40/Colectica.Reporting.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Algenta.Colectica.Model.Ddi.dll": {},
+          "lib/net40/Algenta.Colectica.Model.dll": {},
+          "lib/net40/Algenta.Colectica.Repository.Client.dll": {},
+          "lib/net40/Algenta.Colectica.ViewModel.dll": {},
+          "lib/net40/Colectica.Reporting.dll": {}
+        }
+      },
+      "log4net/1.2.10": {
+        "type": "package",
+        "compile": {
+          "lib/2.0/log4net.dll": {}
+        },
+        "runtime": {
+          "lib/2.0/log4net.dll": {}
+        }
+      },
+      "Newtonsoft.Json/10.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ColecticaSDK/5.4.6743": {
+      "sha512": "RXqCYeDVqgDyS+STDqC4zHRKuypEn75QYvvpNXKn8UWQRiI17DeXx8hNhcJt7c69y9JFjxOtrAyVbJT+TdsGWA==",
+      "type": "package",
+      "path": "colecticasdk/5.4.6743",
+      "files": [
+        "colecticasdk.5.4.6743.nupkg.sha512",
+        "colecticasdk.nuspec",
+        "lib/net40/Algenta.Colectica.Model.Ddi.XML",
+        "lib/net40/Algenta.Colectica.Model.Ddi.dll",
+        "lib/net40/Algenta.Colectica.Model.XML",
+        "lib/net40/Algenta.Colectica.Model.dll",
+        "lib/net40/Algenta.Colectica.Repository.Client.XML",
+        "lib/net40/Algenta.Colectica.Repository.Client.dll",
+        "lib/net40/Algenta.Colectica.ViewModel.XML",
+        "lib/net40/Algenta.Colectica.ViewModel.dll",
+        "lib/net40/Colectica.Reporting.dll"
+      ]
+    },
+    "log4net/1.2.10": {
+      "sha512": "yP7PCpxPt5cB9yiRAvCwyW5YRqXV4jM4tpVLnm/ls2nJt786l5srbSdm5xIEVMXz/kOYqLKP177Gyqey1wdP/A==",
+      "type": "package",
+      "path": "log4net/1.2.10",
+      "files": [
+        "lib/1.0/log4net.dll",
+        "lib/1.0/log4net.xml",
+        "lib/1.1/log4net.dll",
+        "lib/1.1/log4net.xml",
+        "lib/2.0/log4net.dll",
+        "lib/2.0/log4net.xml",
+        "log4net.1.2.10.nupkg.sha512",
+        "log4net.nuspec"
+      ]
+    },
+    "Newtonsoft.Json/10.0.3": {
+      "sha512": "wBM7i7i3U2WX0ecor4zdVGvgrwFUjuigBoHKiL+nH39fCOpCPjBY3RDqJM32edvdyTAVdjzlccHsg41+/+zpSA==",
+      "type": "package",
+      "path": "newtonsoft.json/10.0.3",
+      "files": [
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.10.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "tools/install.ps1"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.5": [
+      "ColecticaSDK >= 5.4.6743"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\dan\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "E:\\svn\\ColecticaSdkSamples\\src\\CSharp\\ColecticaSdkSamples\\ColecticaSdkSamples.csproj",
+      "projectName": "ColecticaSdkSamples",
+      "projectPath": "E:\\svn\\ColecticaSdkSamples\\src\\CSharp\\ColecticaSdkSamples\\ColecticaSdkSamples.csproj",
+      "packagesPath": "C:\\Users\\dan\\.nuget\\packages\\",
+      "outputPath": "E:\\svn\\ColecticaSdkSamples\\src\\CSharp\\ColecticaSdkSamples\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "configFilePaths": [
+        "C:\\Users\\dan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net45"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\dan\\.dotnet\\NuGetFallbackFolder": {},
+        "c:\\nuget": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net45": {
+          "projectReferences": {}
+        }
+      }
+    },
+    "frameworks": {
+      "net45": {
+        "dependencies": {
+          "ColecticaSDK": {
+            "target": "Package",
+            "version": "[5.4.6743, )"
+          }
+        }
+      }
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      },
+      "win-x64": {
+        "#import": []
+      },
+      "win-x86": {
+        "#import": []
+      }
+    }
+  }
+}

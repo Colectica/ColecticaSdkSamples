@@ -157,20 +157,78 @@ namespace ColecticaSdkSamples.Basic
 
 		}
 
-		/// <summary>
-		/// Search for items within a set.
-		/// </summary>
-		/// <remarks>
-		/// In Colectica, a set of items can be determined by a single identifier.
-		/// For example, the identifier of a VariableScheme would represent the set of 
-		/// the VariableScheme, all Variables within the scheme, all Concepts referenced 
-		/// by any Variables in the VariableScheme, along with all other items referenced by 
-		/// any of these items.
-		/// 
-		/// Working with sets is a very efficient way to search for and manipulate 
-		/// large amounts of metadata.
-		/// </remarks>
-		public void SetSearch()
+        /// <summary>
+        /// If you require the entire model to be populated, you can use the set populator to increase efficiency.
+        /// </summary>
+        public void SearchRetrieveUseSetPopulator()
+        {
+            var client = GetClient();
+
+            // Create a SearchFacet, which lets us set the parameters of the search.
+            SearchFacet facet = new SearchFacet();
+
+            // Find all VariableSchemes in the Repository.
+            facet.ItemTypes.Add(DdiItemType.VariableScheme);
+
+            // Submit the search to the Repository.
+            SearchResponse response = client.Search(facet);
+
+            if (response.ReturnedResults > 0)
+            {
+                // The root of the item graph for this example will be a variable scheme
+                var variableSchemeId = response.Results[0].CompositeId;
+
+                var variableScheme = client.GetItem(variableSchemeId, ChildReferenceProcessing.Instantiate);
+
+                // The SetPopulator uses only two Repository calls are needed to populate the entire item graph.
+                // It will find all the children, children of children, etc within this graph of items, and populate them
+                SetPopulator setPopulator = new SetPopulator(client);
+                variableScheme.Accept(setPopulator);
+            }
+        }
+
+        /// <summary>
+        /// If you require the entire model to be populated, you can use the set populator to increase efficiency.
+        /// </summary>
+        public void SearchRetrieveAllItems()
+        {
+            var client = GetClient();
+
+            // Create a SearchFacet, which lets us set the parameters of the search.
+            SearchFacet facet = new SearchFacet();
+
+            // Find all VariableSchemes in the Repository.
+            facet.ItemTypes.Add(DdiItemType.VariableScheme);
+
+            // Submit the search to the Repository.
+            SearchResponse response = client.Search(facet);
+
+            if (response.ReturnedResults > 0)
+            {
+                // The root of the item graph for this example will be a variable scheme
+                var variableSchemeId = response.Results[0].CompositeId;
+
+                // GetSet will find all the children, children of children, etc within this graph of items, and populate them
+                var itemGraphIds = client.GetSet(variableSchemeId);
+                var itemGraphItems = client.GetItems(itemGraphIds);
+            }
+        }
+
+
+        /// <summary>
+        /// Search for items within a set.
+        /// </summary>
+        /// <remarks>
+        /// In Colectica, a set of items can be determined by a single identifier.
+        /// For example, the identifier of a VariableScheme would represent the set of 
+        /// the VariableScheme, all Variables within the scheme, all Concepts referenced 
+        /// by any Variables in the VariableScheme, along with all other items referenced by 
+        /// any of these items.
+        /// 
+        /// Working with sets is a very efficient way to search for and manipulate 
+        /// large amounts of metadata.
+        /// </remarks>
+        public void SetSearch()
 		{
 			var client = GetClient();
 
@@ -338,5 +396,8 @@ namespace ColecticaSdkSamples.Basic
 				client.RegisterItem(item, options);
 			}
 		}
-	}
+
+
+
+    }
 }

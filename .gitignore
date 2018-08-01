@@ -9,3 +9,5 @@
 /src/CSharp/ColecticaSdkMvc/ColecticaSdkMvc.csproj.user
 /src/ColecticaSdkSamples.v11.suo
 /src/ColecticaSdkSamples.v12.suo
+/src/.vs
+/src/packages/ColecticaSDK*

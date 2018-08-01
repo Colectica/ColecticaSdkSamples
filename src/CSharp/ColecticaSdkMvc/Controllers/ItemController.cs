@@ -81,15 +81,15 @@ namespace ColecticaSdkMvc.Controllers
 				model = studyModel;
 				viewName = "StudyUnit";
 			}
-			else if (item is CodeScheme)
+			else if (item is CodeList)
 			{   
-				var codeScheme = item as CodeScheme;
+				var codeList = item as CodeList;
 
 				// Create the model and set the item as a property, so it's contents can be displayed
-				var codeSchemeModel = new CodeSchemeModel();
-				codeSchemeModel.CodeScheme = codeScheme;
+				var codeListModel = new CodeListModel();
+                codeListModel.CodeList = codeList;
 
-				model = codeSchemeModel;
+				model = codeListModel;
 				viewName = "CodeList";
 			}
             else if (item is QualityStatement)

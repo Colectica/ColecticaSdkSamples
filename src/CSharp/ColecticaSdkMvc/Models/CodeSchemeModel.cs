@@ -6,8 +6,8 @@ using System.Web;
 
 namespace ColecticaSdkMvc.Models
 {
-	public class CodeSchemeModel : ItemModel
+	public class CodeListModel : ItemModel
 	{
-		public CodeScheme CodeScheme { get; set; }
+		public CodeList CodeList { get; set; }
 	}
 }
