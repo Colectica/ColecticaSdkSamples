@@ -11,3 +11,7 @@
 /src/ColecticaSdkSamples.v12.suo
 /src/.vs
 /src/packages/ColecticaSDK*
+/.vs
+/src/packages
+obj/
+bin/

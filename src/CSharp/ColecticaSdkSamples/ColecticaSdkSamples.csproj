@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ColecticaSdkSamples</RootNamespace>
     <AssemblyName>ColecticaSdkSamples</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -37,9 +37,26 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Algenta.Colectica.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=60da220094b43ba7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ColecticaSDK.6.0.7641\lib\net45\Algenta.Colectica.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Algenta.Colectica.Model.Ddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=60da220094b43ba7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ColecticaSDK.6.0.7641\lib\net45\Algenta.Colectica.Model.Ddi.dll</HintPath>
+    </Reference>
+    <Reference Include="Algenta.Colectica.Repository.Client, Version=1.0.0.0, Culture=neutral, PublicKeyToken=60da220094b43ba7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ColecticaSDK.6.0.7641\lib\net45\Algenta.Colectica.Repository.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Algenta.Colectica.ViewModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=60da220094b43ba7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ColecticaSDK.6.0.7641\lib\net45\Algenta.Colectica.ViewModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Colectica.Reporting, Version=1.0.0.0, Culture=neutral, PublicKeyToken=60da220094b43ba7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ColecticaSDK.6.0.7641\lib\net45\Colectica.Reporting.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Serilog.2.9.0\lib\net46\Serilog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Activities" />
@@ -64,11 +81,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="ColecticaSDK">
-      <Version>5.4.6743</Version>
-    </PackageReference>
+    <Folder Include="Tasks\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
