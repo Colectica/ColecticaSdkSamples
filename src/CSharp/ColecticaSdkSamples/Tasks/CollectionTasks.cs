@@ -5,14 +5,16 @@ using Algenta.Colectica.Model.Ddi.Utility;
 using Algenta.Colectica.Model.Repository;
 using Algenta.Colectica.Model.Utility;
 using Algenta.Colectica.Repository.Client;
+using Colectica.Reporting;
 using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace ColecticaSdkSamples.SampleTasks
 {
     public class CollectionTasks
-	{
+    {
         public static async Task MainAsync()
         {
             VersionableBase.DefaultAgencyId = "int.example";
@@ -105,7 +107,7 @@ namespace ColecticaSdkSamples.SampleTasks
         public static async Task RegisterItems(IVersionable item)
         {
             // First find all the items that should be registered.
-            // The dirty item finder can collection new and changed items in a model
+            // The dirty item finder can collect new and changed items in a model
             var dirtyItemGatherer = new DirtyItemGatherer();
             item.Accept(dirtyItemGatherer);
 
@@ -254,7 +256,35 @@ namespace ColecticaSdkSamples.SampleTasks
         /// <param name="survey"></param>
         public static void CreateHtmlAndPdf(Instrument survey)
         {
-            //TODO
+            string resourcePath = Path.Combine("Resources", "icons", "types");
+            string baseFileName = "survey-report";
+
+            // Set some options for the report.
+            var options = new ReportOptions();
+            options.IsPaperForm = false;
+            options.IsAccessibilityMode = false;
+
+            var builder = new ReportBuilder();
+
+            // Create English PDF.
+            byte[] englishPdfBytes = builder.CreatePdf(survey, resourcePath, null, options, null, null);
+            string englishPdfFileName = $"{baseFileName}_en.pdf";
+            File.WriteAllBytes(englishPdfFileName, englishPdfBytes);
+
+            // Create English HTML.
+            string englishHtml = builder.CreateHtml(survey, resourcePath, null, options, null, null);
+            string englishHtmlFileName = $"{baseFileName}_en.html";
+            File.WriteAllText(englishHtmlFileName, englishHtml);
+
+            // Create French PDF.
+            byte[] frenchPdfBytes = builder.CreatePdf(survey, resourcePath, null, options, null, null);
+            string frenchPdfFileName = $"{baseFileName}_fr.pdf";
+            File.WriteAllBytes(frenchPdfFileName, frenchPdfBytes);
+
+            // Create French HTML.
+            string frenchHtml = builder.CreateHtml(survey, resourcePath, null, options, null, null);
+            string frenchHtmlFileName = $"{baseFileName}_fr.html";
+            File.WriteAllText(frenchHtmlFileName, frenchHtml);
         }
 
 
@@ -283,29 +313,29 @@ namespace ColecticaSdkSamples.SampleTasks
                 Password = "password"
             };
 
-            var api = new WcfRepositoryClient(info);            
+            var api = new WcfRepositoryClient(info);
             return api;
         }
 
         private static RepositoryItem VersionableToRepositoryItem(IVersionable versionable)
         {
             Collection<Note> emptyNotes = new Collection<Note>();
-            
-                RepositoryItem ri = new RepositoryItem()
-                {
-                    CompositeId = versionable.CompositeId,
-                    Item = versionable.GetDdi33FragmentRepresentation().ToString(),
-                    ItemType = versionable.ItemType,
-                    Notes = emptyNotes,
-                    ItemFormat = RepositoryFormats.Ddi33,
-                    IsPublished = versionable.IsPublished,
-                    IsProvisional = true,
-                    VersionDate = versionable.VersionDate,
-                    VersionRationale = versionable.VersionRationale,
-                    VersionResponsibility = versionable.VersionResponsibility
-                };
+
+            RepositoryItem ri = new RepositoryItem()
+            {
+                CompositeId = versionable.CompositeId,
+                Item = versionable.GetDdi33FragmentRepresentation().ToString(),
+                ItemType = versionable.ItemType,
+                Notes = emptyNotes,
+                ItemFormat = RepositoryFormats.Ddi33,
+                IsPublished = versionable.IsPublished,
+                IsProvisional = true,
+                VersionDate = versionable.VersionDate,
+                VersionRationale = versionable.VersionRationale,
+                VersionResponsibility = versionable.VersionResponsibility
+            };
             return ri;
-            
+
         }
 
         private static void TestUserIdSearch()
@@ -322,7 +352,7 @@ namespace ColecticaSdkSamples.SampleTasks
             c.Description.Current = "TestCategoryDesc";
             string userId = Guid.NewGuid().ToString();
             c.UserIds.Add(new UserId("sometype", userId));
-            client.RegisterItem(c,new CommitOptions());
+            client.RegisterItem(c, new CommitOptions());
 
             var facet = new SearchFacet();
             facet.SearchTargets.Add(DdiStringType.UserId);
@@ -335,5 +365,5 @@ namespace ColecticaSdkSamples.SampleTasks
         }
 
 
-	}
+    }
 }
