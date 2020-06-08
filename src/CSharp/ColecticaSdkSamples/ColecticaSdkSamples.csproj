@@ -72,6 +72,7 @@
     <Compile Include="Basic\ConsoleWriterVisitor.cs" />
     <Compile Include="Basic\Intro.cs" />
     <Compile Include="Basic\Quality.cs" />
+    <Compile Include="Tasks\CollectionTasks.cs" />
     <Compile Include="Tools\CategoryHarmonizer.cs" />
     <Compile Include="Tools\VariableToQuestionMapper.cs" />
     <Compile Include="Tools\OrganizeSequences.cs" />
@@ -83,9 +84,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tasks\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>REM Copy DDI3.1 schemas into place.

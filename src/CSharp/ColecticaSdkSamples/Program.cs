@@ -11,6 +11,7 @@ using Algenta.Colectica.Model.Repository;
 using Algenta.Colectica.Model.Ddi.Utility;
 using System.IO;
 using ColecticaSdkSamples.Basic;
+using ColecticaSdkSamples.SampleTasks;
 
 namespace ConsoleApplication2
 {
@@ -25,18 +26,11 @@ namespace ConsoleApplication2
             MultilingualString.CurrentCulture = "en-US";
             VersionableBase.DefaultAgencyId = "example.org";
 
-            // Call some sample method from the Intro class.
-            Intro intro = new Intro();
-            intro.BuildSomeDdiAndWriteToXml();
-            intro.LoadDdiAndCountSomeElements();
-            intro.QueryObjectModel();
+            // Initialize logging.
+            Logger.Instance.InitializeInAppData("ColecticaTests-Collection.txt");
 
-            // Visit the graph that we made.
-            var visitor = new ConsoleWriterVisitor();
-            intro.Instance.Accept(visitor);
-
-            // Also, look around the RepositoryIntro class and the various
-            // classes in the Tools namespace.
+            // Run sample data collection tasks.
+            CollectionTasks.MainAsync().GetAwaiter().GetResult();
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadLine();
