@@ -267,6 +267,7 @@ namespace ColecticaSdkSamples.SampleTasks
             var builder = new ReportBuilder();
 
             // Create English PDF.
+            MultilingualString.CurrentCulture = "en";
             byte[] englishPdfBytes = builder.CreatePdf(survey, resourcePath, null, options, null, null);
             string englishPdfFileName = $"{baseFileName}_en.pdf";
             File.WriteAllBytes(englishPdfFileName, englishPdfBytes);
@@ -277,6 +278,7 @@ namespace ColecticaSdkSamples.SampleTasks
             File.WriteAllText(englishHtmlFileName, englishHtml);
 
             // Create French PDF.
+            MultilingualString.CurrentCulture = "fr";
             byte[] frenchPdfBytes = builder.CreatePdf(survey, resourcePath, null, options, null, null);
             string frenchPdfFileName = $"{baseFileName}_fr.pdf";
             File.WriteAllBytes(frenchPdfFileName, frenchPdfBytes);
