@@ -37,30 +37,52 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Algenta.Colectica.Commands.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=60da220094b43ba7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ColecticaSDKPlusSPSS.6.0.7653\lib\net472\Algenta.Colectica.Commands.Data.dll</HintPath>
+    </Reference>
     <Reference Include="Algenta.Colectica.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=60da220094b43ba7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ColecticaSDK.6.0.7641\lib\net45\Algenta.Colectica.Model.dll</HintPath>
+      <HintPath>..\..\packages\ColecticaSDKPlusSPSS.6.0.7653\lib\net472\Algenta.Colectica.Model.dll</HintPath>
     </Reference>
     <Reference Include="Algenta.Colectica.Model.Ddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=60da220094b43ba7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ColecticaSDK.6.0.7641\lib\net45\Algenta.Colectica.Model.Ddi.dll</HintPath>
+      <HintPath>..\..\packages\ColecticaSDKPlusSPSS.6.0.7653\lib\net472\Algenta.Colectica.Model.Ddi.dll</HintPath>
     </Reference>
     <Reference Include="Algenta.Colectica.Repository.Client, Version=1.0.0.0, Culture=neutral, PublicKeyToken=60da220094b43ba7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ColecticaSDK.6.0.7641\lib\net45\Algenta.Colectica.Repository.Client.dll</HintPath>
+      <HintPath>..\..\packages\ColecticaSDKPlusSPSS.6.0.7653\lib\net472\Algenta.Colectica.Repository.Client.dll</HintPath>
     </Reference>
     <Reference Include="Algenta.Colectica.ViewModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=60da220094b43ba7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ColecticaSDK.6.0.7641\lib\net45\Algenta.Colectica.ViewModel.dll</HintPath>
+      <HintPath>..\..\packages\ColecticaSDKPlusSPSS.6.0.7653\lib\net472\Algenta.Colectica.ViewModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Colectica.Data.Excel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ColecticaSDKPlusSPSS.6.0.7653\lib\net472\Colectica.Data.Excel.dll</HintPath>
     </Reference>
     <Reference Include="Colectica.Reporting, Version=1.0.0.0, Culture=neutral, PublicKeyToken=60da220094b43ba7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ColecticaSDK.6.0.7641\lib\net45\Colectica.Reporting.dll</HintPath>
+      <HintPath>..\..\packages\ColecticaSDKPlusSPSS.6.0.7653\lib\net472\Colectica.Reporting.dll</HintPath>
+    </Reference>
+    <Reference Include="Data.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=60da220094b43ba7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ColecticaSDKPlusSPSS.6.0.7653\lib\net472\Data.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader, Version=3.4.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ExcelDataReader.3.4.0\lib\net45\ExcelDataReader.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader.DataSet, Version=3.4.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ExcelDataReader.DataSet.3.4.0\lib\net45\ExcelDataReader.DataSet.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Sasr.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=60da220094b43ba7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ColecticaSDKPlusSPSS.6.0.7653\lib\net472\Sasr.Data.dll</HintPath>
+    </Reference>
     <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Serilog.2.9.0\lib\net46\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Spss.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=60da220094b43ba7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ColecticaSDKPlusSPSS.6.0.7653\lib\net472\Spss.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Activities" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Workflow.Activities" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -72,6 +94,7 @@
     <Compile Include="Basic\ConsoleWriterVisitor.cs" />
     <Compile Include="Basic\Intro.cs" />
     <Compile Include="Basic\Quality.cs" />
+    <Compile Include="Tasks\ProcessingTasks.cs" />
     <Compile Include="Tasks\CollectionTasks.cs" />
     <Compile Include="Tools\CategoryHarmonizer.cs" />
     <Compile Include="Tools\VariableToQuestionMapper.cs" />
