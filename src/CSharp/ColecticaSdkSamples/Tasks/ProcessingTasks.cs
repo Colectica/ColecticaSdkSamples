@@ -193,7 +193,7 @@ namespace ColecticaSdkSamples.SampleTasks
         public static void AssignAdministrativeStatus(PhysicalInstance dataset)
         {
             // Get the Repository API
-            var api = GetRepositoryApiUsername();
+            var api = GetRepositoryApiWindows();
 
             // Set the AdministrativeStatus on a specific version of the survey
             api.CreateTag(dataset.CompositeId, "TheCurrentAdministrativeState");
@@ -208,7 +208,7 @@ namespace ColecticaSdkSamples.SampleTasks
         public static void AssignPermissions(PhysicalInstance dataset)
         {
             // Get the Repository API
-            var api = GetRepositoryApiUsername();
+            var api = GetRepositoryApiWindows();
 
             // create a new item permission for the survey
             var permission = new ItemPermission();
@@ -232,16 +232,16 @@ namespace ColecticaSdkSamples.SampleTasks
         public static void CreateHtmlAndPdf(PhysicalInstance dataset)
         {
             string resourcePath = Path.Combine("Resources", "icons", "types");
-            string baseFileName = "survey-report";
+            string baseFileName = "codebook";
 
             // Set some options for the report.
             var options = new ReportOptions();
-            options.IsPaperForm = false;
             options.IsAccessibilityMode = false;
 
             var builder = new ReportBuilder();
 
             // Create English PDF.
+            MultilingualString.CurrentCulture = "en";
             byte[] englishPdfBytes = builder.CreatePdf(dataset, resourcePath, null, options, null, null);
             string englishPdfFileName = $"{baseFileName}_en.pdf";
             File.WriteAllBytes(englishPdfFileName, englishPdfBytes);
@@ -252,6 +252,7 @@ namespace ColecticaSdkSamples.SampleTasks
             File.WriteAllText(englishHtmlFileName, englishHtml);
 
             // Create French PDF.
+            MultilingualString.CurrentCulture = "fr";
             byte[] frenchPdfBytes = builder.CreatePdf(dataset, resourcePath, null, options, null, null);
             string frenchPdfFileName = $"{baseFileName}_fr.pdf";
             File.WriteAllBytes(frenchPdfFileName, frenchPdfBytes);
@@ -269,7 +270,7 @@ namespace ColecticaSdkSamples.SampleTasks
             var info = new RepositoryConnectionInfo()
             {
                 AuthenticationMethod = RepositoryAuthenticationMethod.Windows,
-                Url = "localhost:19893",
+                Url = "localhost",
                 TransportMethod = RepositoryTransportMethod.NetTcp,
             };
 

@@ -27,10 +27,10 @@ namespace ConsoleApplication2
             VersionableBase.DefaultAgencyId = "example.org";
 
             // Initialize logging.
-            Logger.Instance.InitializeInAppData("ColecticaTests-Collection.txt");
+            Logger.Instance.InitializeInAppData("ColecticaSamples-.txt");
 
-            // Run sample data collection tasks.
-            CollectionTasks.MainAsync().GetAwaiter().GetResult();
+            // Run sample tasks.
+            ProcessingTasks.MainAsync().GetAwaiter().GetResult();
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadLine();
