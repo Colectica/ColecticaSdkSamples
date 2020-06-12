@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColecticaSdkSamples", "CSharp\ColecticaSdkSamples\ColecticaSdkSamples.csproj", "{028E1373-2086-4278-B4A0-A1671FF5F7BB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColecticaSdkMvc", "CSharp\ColecticaSdkMvc\ColecticaSdkMvc.csproj", "{9969A397-6973-4263-99A4-0FDCFDB2F2AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColecticaAddinSamples", "ColecticaAddinSamples\ColecticaAddinSamples.csproj", "{B32F876A-58A2-46D3-92D9-8E4319695B37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,8 +39,23 @@ Global
 		{9969A397-6973-4263-99A4-0FDCFDB2F2AA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{9969A397-6973-4263-99A4-0FDCFDB2F2AA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{9969A397-6973-4263-99A4-0FDCFDB2F2AA}.Release|x86.ActiveCfg = Release|Any CPU
+		{B32F876A-58A2-46D3-92D9-8E4319695B37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B32F876A-58A2-46D3-92D9-8E4319695B37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B32F876A-58A2-46D3-92D9-8E4319695B37}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B32F876A-58A2-46D3-92D9-8E4319695B37}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B32F876A-58A2-46D3-92D9-8E4319695B37}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B32F876A-58A2-46D3-92D9-8E4319695B37}.Debug|x86.Build.0 = Debug|Any CPU
+		{B32F876A-58A2-46D3-92D9-8E4319695B37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B32F876A-58A2-46D3-92D9-8E4319695B37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B32F876A-58A2-46D3-92D9-8E4319695B37}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B32F876A-58A2-46D3-92D9-8E4319695B37}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B32F876A-58A2-46D3-92D9-8E4319695B37}.Release|x86.ActiveCfg = Release|Any CPU
+		{B32F876A-58A2-46D3-92D9-8E4319695B37}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D737A8C-5C32-46B3-9D6A-B65F1189F839}
 	EndGlobalSection
 EndGlobal

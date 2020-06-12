@@ -109,6 +109,7 @@
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Numerics" />
@@ -129,6 +130,7 @@
     <Compile Include="Basic\ConsoleWriterVisitor.cs" />
     <Compile Include="Basic\Intro.cs" />
     <Compile Include="Basic\Quality.cs" />
+    <Compile Include="Tasks\DisseminationTasks.cs" />
     <Compile Include="Tasks\ProcessingTasks.cs" />
     <Compile Include="Tasks\CollectionTasks.cs" />
     <Compile Include="Tools\CategoryHarmonizer.cs" />
@@ -142,7 +144,12 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\ColecticaAddinSamples\ColecticaAddinSamples.csproj">
+      <Project>{B32F876A-58A2-46D3-92D9-8E4319695B37}</Project>
+      <Name>ColecticaAddinSamples</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>REM Copy DDI3.1 schemas into place.

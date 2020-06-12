@@ -30,7 +30,7 @@ namespace ConsoleApplication2
             Logger.Instance.InitializeInAppData("ColecticaSamples-.txt");
 
             // Run sample tasks.
-            ProcessingTasks.MainAsync().GetAwaiter().GetResult();
+            DisseminationTasks.MainAsync().GetAwaiter().GetResult();
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadLine();
