@@ -16,3 +16,4 @@
 obj/
 bin/
 /src/CSharp/ColecticaSdkSamples/lib
+src/Python/.vscode/launch.json
