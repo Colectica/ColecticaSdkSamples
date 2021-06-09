@@ -123,6 +123,7 @@ namespace ColecticaSdkSamples.SampleTasks
             {
                 addItemsRequest.Items.Add(VersionableToRepositoryItem(itemToRegister));
             }
+            await api.AddItemsToTransactionAsync(addItemsRequest);
 
             // commit the transaction, the Repository will handle the versioning
             var options = new RepositoryTransactionCommitOptions()
