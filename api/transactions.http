@@ -1,4 +1,4 @@
-@transactionId = 172
+@transactionId = 50473
 @conceptId = 5d0acaf3-8bbe-4742-a687-a299afaadf7e
 
 ### Create a transaction
@@ -23,7 +23,7 @@ Accept: application/json
         {
             "itemType": "48b7d4b4-72bf-470a-a885-720f89bfbc40",
             "agencyId": "int.example",
-            "version": 0,
+            "version": 1,
             "identifier": "{{conceptId}}",
             "item": '<Fragment xmlns:r="ddi:reusable:3_3" xmlns="ddi:instance:3_3"> <Concept isUniversallyUnique="true" versionDate="2023-10-03T15:26:30.6816076Z" isCharacteristic="false" xmlns="ddi:conceptualcomponent:3_3"> <r:URN>urn:ddi:int.example:{{conceptId}}:1</r:URN> <r:Agency>int.example</r:Agency> <r:ID>{{conceptId}}</r:ID> <r:Version>1</r:Version> <r:VersionResponsibility>jeremy@colectica.com</r:VersionResponsibility> <r:VersionRationale> <r:RationaleDescription> <r:String xml:lang="en-US">first draft</r:String> </r:RationaleDescription> </r:VersionRationale> <r:Label> <r:Content xml:lang="en-US">Demographics</r:Content> </r:Label> </Concept> </Fragment>',
             "versionDate": "2023-11-09T17:12:59.165Z",
@@ -46,7 +46,7 @@ Accept: application/json
   "versionRationale": {
     "en": "Here is a log message."
   },
-  "transactionType": 1,
+  "transactionType": 2,
   "transactionId": {{transactionId}}
 }
 
