@@ -1,0 +1,18 @@
+### Get a token
+
+// Most requests require authorization with a Bearer token.
+// To get a bearer token, pass your username and password to this method.
+POST {{host}}/token/CreateToken
+Content-Type: application/json
+Accept: application/json
+
+{
+    "username": "{{user}}",
+    "password": "{{password}}"
+}
+
+### Get basic repository information
+
+GET {{host}}/api/v1/repository/info
+Accept: application/json
+Authorization: Bearer {{token}}
