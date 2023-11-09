@@ -1,16 +1,45 @@
-@transactionId = 172
-@conceptId = 5d0acaf3-8bbe-4742-a687-a299afaadf7e
+# Transaction API Examples
+
+The transaction API allows you to register items with the repository.
+When using the transaction API, the repository is responsible for version propagation.
+
 
 ### Create a transaction
 
+### Request
+
 // Creating a transaction is a simple POST. No body is required.
+
+```http
 POST {{host}}/api/v1/transaction
 Authorization: Bearer {{token}}
 Content-Type: application/json
 Accept: application/json
+```
+
+#### Response
+
+```json
+{
+  "TransactionId": 173,
+  "PersistentId": "cb1f066d-5969-4c6f-978c-0b001991930d",
+  "Created": "2023-11-09T17:32:43.8539273Z",
+  "Modified": "2023-11-09T17:32:43.8539274Z",
+  "Status": 0,
+  "TransactionType": 0,
+  "Username": "jeremy@colectica.com",
+  "ItemCount": 0,
+  "PropagatedItemCount": 0,
+  "Data": null
+}
+```
 
 
 ### Add a Concept to the transaction
+
+#### Request
+
+```http
 POST {{host}}/api/v1/transaction/_addItemsToTransaction
 Authorization: Bearer {{token}}
 Content-Type: application/json
@@ -34,9 +63,30 @@ Accept: application/json
 
     ]
 }
+```
+
+#### Response
+
+```json
+{
+  "TransactionId": 172,
+  "PersistentId": "f1f3f15c-cee3-43ad-b11b-ce092d5a2131",
+  "Created": "2023-11-09T17:28:53.771013",
+  "Modified": "2023-11-09T17:33:12.8412867Z",
+  "Status": 1,
+  "TransactionType": 1,
+  "Username": "jeremy@colectica.com",
+  "ItemCount": 1,
+  "PropagatedItemCount": 0,
+  "Data": null
+}
+```
 
 ### Commit the transaction
 
+#### Request
+
+```http
 POST {{host}}/api/v1/transaction/_commitTransaction
 Authorization: Bearer {{token}}
 Content-Type: application/json
@@ -79,3 +129,27 @@ Accept: application/json
 // Older child references are replaced with latest child references
 // Propagation of updated items is done in the same manner as CommitAsLatestWithLatestChildrenAndPropagateVersions
 // Scoped Sets are currently not supported with this repository update type
+```
+
+
+#### Response
+
+```json
+{
+  "UserCommitted": [],
+  "SystemCommitted": [],
+  "NotProcessed": [],
+  "Transaction": {
+    "TransactionId": 172,
+    "PersistentId": "f1f3f15c-cee3-43ad-b11b-ce092d5a2131",
+    "Created": "2023-11-09T17:28:53.771013",
+    "Modified": "2023-11-09T17:28:57.7879595Z",
+    "Status": 1,
+    "TransactionType": 1,
+    "Username": "jeremy@colectica.com",
+    "ItemCount": 0,
+    "PropagatedItemCount": 0,
+    "Data": null
+  }
+}
+```
