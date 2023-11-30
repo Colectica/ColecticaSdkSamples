@@ -1,4 +1,4 @@
-* Colectica SDK and API Examples
+# Colectica SDK and API Examples
 
 These examples provide a way to get started using Colectica SDK and the Colectica Repository API.
 
