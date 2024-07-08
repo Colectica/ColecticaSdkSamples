@@ -1,0 +1,22 @@
+
+
+POST {{host}}/api/v1/_query/advanced
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "itemTypes": [
+        "30ea0200-7121-4f01-8d21-a931a182b86d"
+    ],
+    "textFacets": [
+        {
+            "propertyName": "dcTitle",
+            "exactMatch": false,
+            "textTerms": [
+                "Wave5"
+            ]
+        }
+        
+    ]
+}
